@@ -5,9 +5,9 @@ const CLI = require('clui');
 const program = require('commander');
 let projectToStart = "";
 let userInputRecorded = "";
-
+const appRoot = require('app-root-path');
 const exec = require('child_process').exec;
-const util = require('util')
+const util = require('util');
 let childProcess;
 
 yaml = require('js-yaml');
@@ -16,7 +16,7 @@ let projects = {};
 
 // Get document, or throw exception on error
 try {
-   projects = yaml.safeLoad(fs.readFileSync('./projects.yml', 'utf8'));
+   projects = yaml.safeLoad(fs.readFileSync(appRoot + '/projects.yml', 'utf8'));
    console.log(projects["RABBITMQ"]);
 } catch (e) {
    console.log(e);
